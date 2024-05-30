@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package v1;
+
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+
+option go_package = "be_demo/api;v1";
+
+service Cart {
+	//购物车添加
+	rpc CreateCart (CreateCartRequest) returns (CreateCartReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/add",
+			body: "*",
+		};
+	};
+	//购物车数量更新
+	rpc QuantityUpdateCart (QuantityUpdateRequest) returns (QuantityUpdateReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/quantity-update",
+			body: "*",
+		};
+	};
+	//购物车删除
+	rpc DeleteCart (DeleteCartRequest) returns (DeleteCartReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/remove",
+			body: "*",
+		};
+	};
+	//购物车数量
+	rpc GetCartQuantity (GetCartQuantityRequest) returns (GetCartQuantitytReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/quantity",
+			body: "*"
+		};
+	};
+	//购物车列表
+	rpc ListCart (ListCartRequest) returns (ListCartReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/list",
+			body: "*"
+		};
+	};
+	//选中购物车商品【记录用户的选中状态】
+	rpc CheckedCart (CheckedCartRequest) returns (CheckedCartReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/checked",
+			body: "*",
+		};
+	};
+	//购物车点击规格获取spu详情  
+	rpc ChangeCartSkuInfo (ChangeCartSkuInfoRequest) returns (ChangeCartSkuInfoReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/change-sku-info",
+			body: "*",
+		};
+	};
+	// //购物车sku更换规格
+	rpc ChangeCartSku (ChangeCartSkuRequest) returns (ChangeCartSkuReply){
+		option (google.api.http) = {
+			post: "/shopapi/v2/cart/change-sku",
+			body: "*",
+		};
+	};
+}
+
+message CreateCartRequest {
+	message SkuInfo{
+		string sku_unionid = 1[(validate.rules).string = {min_len:13}];
+		int32 goods_num = 2[(validate.rules).int32 = {gt:0}];
+	}
+	repeated SkuInfo sku_info = 1 [(validate.rules).repeated = {min_items:1}];
+	int32 promotion_id = 2 [(validate.rules).int32 = {gte:0}];
+	string source_id = 3 ;
+	string source_url = 4;
+}
+message CreateCartReply{
+}
+
+message QuantityUpdateRequest{
+	int32 cart_id = 1 [(validate.rules).int32 = {gt:0}];
+	int32 goods_num = 2 [(validate.rules).int32 = {gt:0,lte:99}];
+	string sku_unionid = 3 [(validate.rules).string = {min_len:13}];
+}
+message QuantityUpdateReply{
+}
+
+message DeleteCartRequest{
+	repeated int32 cart_ids = 1 [(validate.rules).repeated = {min_items:1}];
+}
+message DeleteCartReply{
+	CartListInfo cart_list_info = 1 [json_name="cart_list_info"];
+}
+
+message GetCartQuantityRequest{}
+message GetCartQuantitytReply{
+	int32 cart_list_num = 1 [json_name="cart_list_num"];
+}
+
+message ListCartRequest{}
+message ListCartReply{
+	CartListInfo cart_list_info = 1 [json_name="cart_list_info"];
+}
+
+message CheckedCartRequest{
+	repeated int32 cart_ids = 1 [(validate.rules).repeated.min_items = 1];
+	int32 checked = 2 [(validate.rules).int32 = {in:[0,1]}];
+}
+message CheckedCartReply{
+	CartListInfo cart_list_info = 3 [json_name="cart_list_info"];
+}
+
+//购物车列表共用字段
+message CartListInfo{
+}
+message ChangeCartSkuInfoRequest{
+	string spu_unionid = 1[(validate.rules).string = {min_len:13}];
+	int32 cart_id = 2[(validate.rules).int32 = {gt:0}];
+}
+
+message ChangeCartSkuInfoReply{
+}
+
+message ChangeCartSkuRequest{
+}
+
+message ChangeCartSkuReply{
+	CartListInfo cart_list_info = 1 [json_name="cart_list_info"];
+}

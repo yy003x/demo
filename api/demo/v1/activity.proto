@@ -1,0 +1,75 @@
+syntax = "proto3";
+package v1;
+
+import "google/api/annotations.proto";
+import "validate/validate.proto";
+option go_package = "be_demo/api;v1";
+
+service ActivityService {
+	rpc CreateActivity (CreateActivityRequest) returns (CreateActivityReply){
+		option (google.api.http) = {
+				post: "/shopapi/v1/activity/createActivity",
+				body: "*"
+		};
+	};
+	rpc UpdateActivity (UpdateActivityRequest) returns (UpdateActivityReply){
+		option (google.api.http) = {
+				post: "/shopapi/v1/activity/updateActivity",
+				body: "*"
+		};
+	};
+	rpc ActivityList (ActivityListRequest) returns (ActivityListReply){
+		option (google.api.http) = {
+				post: "/shopapi/v1/activity/activityList",
+				body: "*"
+		};
+	};
+	rpc ActivityInfo (ActivityInfoRequest) returns (ActivityInfoReply){
+		option (google.api.http) = {
+				post: "/shopapi/v1/activity/activityInfo",
+				body: "*"
+		};
+	};
+	rpc BatchActivityInfo (BatchActivityInfoRequest) returns (BatchActivityInfoReply){
+		option (google.api.http) = {
+				post: "/shopapi/v1/activity/batchActivityInfo",
+				body: "*"
+		};
+	};
+}
+
+//CreateActivity 
+message CreateActivityRequest {
+	string uuid = 1[json_name="uuid", (validate.rules).string = {min_len:24, max_len:24}];
+}
+message CreateActivityReply {
+}
+
+//UpdateActivity 
+message UpdateActivityRequest {
+	string uuid = 1[json_name="uuid", (validate.rules).string = {min_len:24, max_len:24}];
+}
+message UpdateActivityReply {
+}
+
+//ActivityList
+message ActivityListRequest {
+	int32 page = 1 [json_name="page", (validate.rules).int32 = {gte:0}];
+	int32 size = 2 [json_name="size", (validate.rules).int32 = {gte:10, lte:50}];
+}
+message ActivityListReply{
+}
+
+//ActivityInfo 
+message ActivityInfoRequest {
+	string uuid = 1[json_name="uuid", (validate.rules).string = {min_len:24, max_len:24}];
+}
+message ActivityInfoReply {
+}
+
+//BatchActivityInfo
+message BatchActivityInfoRequest {
+	repeated string uuids = 1 [json_name="uuids", (validate.rules).repeated = {min_items:1,max_items:50}];
+}
+message BatchActivityInfoReply{
+}

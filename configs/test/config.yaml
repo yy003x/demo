@@ -1,0 +1,55 @@
+server:
+  http:
+    addr: 0.0.0.0:8630
+    timeout: 1s
+  grpc:
+    addr: 0.0.0.0:9630
+    timeout: 1s
+  api:
+    addr: 0.0.0.0:8631
+    timeout: 1s
+  admin:
+    addr: 0.0.0.0:8632
+    timeout: 1s
+data:
+  rwdb:
+    driver: mysql-test-rwdb
+    source: talbook_test_rw:5nReFlpF5aAWPkh_@tcp(rm-2zeu070mbue87769d.mysql.rds.aliyuncs.com:3306)/dm_tradein_test?timeout=3s&charset=utf8mb4&parseTime=True&loc=Local
+    max_idle_conns: 1
+    max_open_conns: 2
+  rodb:
+    driver: mysql-test-rodb
+    source: talbook_test_ro:lbkHwlDpopkOUj5_@tcp(rm-2zeu070mbue87769d.mysql.rds.aliyuncs.com:3306)/dm_tradein_test?timeout=3s&charset=utf8mb4&parseTime=True&loc=Local
+    max_idle_conns: 1
+    max_open_conns: 2
+  redis:
+    addr: 127.0.0.1:6379
+    read_timeout: 0.2s
+    write_timeout: 0.2s
+public:
+  log:
+    path: "api-%Y%m%d.log"
+    level: debug
+    rotationtime: 86400s
+    maxage: 259200s
+    stdout: True
+  nacos:
+    server_configs:
+      - ip: "mse-db443762-nacos-ans.mse.aliyuncs.com"
+        port: "8848"
+    client_config:
+      namespace_id: "public_test"
+      timeout_ms: 5000
+      listen_interval: 10000
+      beat_interval: 5000
+      not_cache: true
+      log_dir: "/tmp/logs/nacos"
+      cache_dir: "/tmp/logs/nacos/cache"
+      log_level: debug
+    client_param:
+      - group: "be_demo"
+        data_id: "nacos.yaml"
+notice:
+  url: "https://yach-oapi.zhiyinlou.com/robot/send?access_token=MWtIU2pCTkx1UWdUL3BuOUd1WDU2TG5IZE1xT0pwRmhGeWRsaHorRnBLZHNqWlpPRjJ1elA3aUpEd2M5ZktTTQ"
+  secret: "SEC1cd8066358886ba7e7b51d8e2ac391db"
+

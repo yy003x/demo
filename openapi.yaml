@@ -1,0 +1,781 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: ""
+    version: 0.0.1
+paths:
+    /helloworld/{name}:
+        get:
+            tags:
+                - Greeter
+            description: Sends a greeting
+            operationId: Greeter_SayHello
+            parameters:
+                - name: name
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/helloworld.v1.HelloReply'
+    /shopapi/v1/activity/activityInfo:
+        post:
+            tags:
+                - ActivityService
+            operationId: ActivityService_ActivityInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ActivityInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ActivityInfoReply'
+    /shopapi/v1/activity/activityList:
+        post:
+            tags:
+                - ActivityService
+            operationId: ActivityService_ActivityList
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ActivityListRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ActivityListReply'
+    /shopapi/v1/activity/batchActivityInfo:
+        post:
+            tags:
+                - ActivityService
+            operationId: ActivityService_BatchActivityInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.BatchActivityInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.BatchActivityInfoReply'
+    /shopapi/v1/activity/createActivity:
+        post:
+            tags:
+                - ActivityService
+            operationId: ActivityService_CreateActivity
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.CreateActivityRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.CreateActivityReply'
+    /shopapi/v1/activity/updateActivity:
+        post:
+            tags:
+                - ActivityService
+            operationId: ActivityService_UpdateActivity
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.UpdateActivityRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.UpdateActivityReply'
+    /shopapi/v1/goods/batchSkuInfo:
+        post:
+            tags:
+                - GoodsService
+            description: 批量sku信息
+            operationId: GoodsService_BatchSkuInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.BatchSkuInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.BatchSkuInfoReply'
+    /shopapi/v1/goods/batchSpuInfo:
+        post:
+            tags:
+                - GoodsService
+            description: 批量spu信息
+            operationId: GoodsService_BatchSpuInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.BatchSpuInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.BatchSpuInfoReply'
+    /shopapi/v1/goods/skuInfo:
+        post:
+            tags:
+                - GoodsService
+            description: 商品Sku信息
+            operationId: GoodsService_SkuInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.SkuInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.SkuInfoReply'
+    /shopapi/v1/goods/spuInfo:
+        post:
+            tags:
+                - GoodsService
+            description: 商品Spu信息
+            operationId: GoodsService_SpuInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.SpuInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.SpuInfoReply'
+    /shopapi/v1/goods/spuList:
+        post:
+            tags:
+                - GoodsService
+            description: 商品列表
+            operationId: GoodsService_SpuList
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.SpuListRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.SpuListReply'
+    /shopapi/v1/order/confirmOrder:
+        post:
+            tags:
+                - OrderService
+            description: 确认订单
+            operationId: OrderService_ConfirmOrder
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ConfirmOrderRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ConfirmOrderReply'
+    /shopapi/v1/order/createOrder:
+        post:
+            tags:
+                - OrderService
+            description: 提交订单
+            operationId: OrderService_CreateOrder
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.CreateOrderRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.CreateOrderReply'
+    /shopapi/v1/order/orderInfo:
+        post:
+            tags:
+                - OrderService
+            description: 订单详情
+            operationId: OrderService_OrderInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.OrderInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.OrderInfoReply'
+    /shopapi/v1/order/orderList:
+        post:
+            tags:
+                - OrderService
+            description: 订单列表
+            operationId: OrderService_OrderList
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.OrderListRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.OrderListReply'
+    /shopapi/v1/order/payOrder:
+        post:
+            tags:
+                - OrderService
+            description: 支付订单
+            operationId: OrderService_PayOrder
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.PayOrderRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.PayOrderReply'
+    /shopapi/v2/cart/add:
+        post:
+            tags:
+                - Cart
+            description: 购物车添加
+            operationId: Cart_CreateCart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.CreateCartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.CreateCartReply'
+    /shopapi/v2/cart/change-sku:
+        post:
+            tags:
+                - Cart
+            description: //购物车sku更换规格
+            operationId: Cart_ChangeCartSku
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ChangeCartSkuRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ChangeCartSkuReply'
+    /shopapi/v2/cart/change-sku-info:
+        post:
+            tags:
+                - Cart
+            description: 购物车点击规格获取spu详情
+            operationId: Cart_ChangeCartSkuInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ChangeCartSkuInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ChangeCartSkuInfoReply'
+    /shopapi/v2/cart/checked:
+        post:
+            tags:
+                - Cart
+            description: 选中购物车商品【记录用户的选中状态】
+            operationId: Cart_CheckedCart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.CheckedCartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.CheckedCartReply'
+    /shopapi/v2/cart/list:
+        post:
+            tags:
+                - Cart
+            description: 购物车列表
+            operationId: Cart_ListCart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.ListCartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.ListCartReply'
+    /shopapi/v2/cart/quantity:
+        post:
+            tags:
+                - Cart
+            description: 购物车数量
+            operationId: Cart_GetCartQuantity
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.GetCartQuantityRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.GetCartQuantitytReply'
+    /shopapi/v2/cart/quantity-update:
+        post:
+            tags:
+                - Cart
+            description: 购物车数量更新
+            operationId: Cart_QuantityUpdateCart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.QuantityUpdateRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.QuantityUpdateReply'
+    /shopapi/v2/cart/remove:
+        post:
+            tags:
+                - Cart
+            description: 购物车删除
+            operationId: Cart_DeleteCart
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.DeleteCartRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.DeleteCartReply'
+    /shopapi/v2/goods/spuAcitvityInfo:
+        post:
+            tags:
+                - GoodsService
+            description: 商品活动信息
+            operationId: GoodsService_SpuAcitvityInfo
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/v1.SpuAcitvityInfoRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/v1.SpuAcitvityInfoReply'
+components:
+    schemas:
+        helloworld.v1.HelloReply:
+            type: object
+            properties:
+                message:
+                    type: string
+            description: The response message containing the greetings
+        v1.ActivityInfoReply:
+            type: object
+            properties: {}
+        v1.ActivityInfoRequest:
+            type: object
+            properties:
+                uuid:
+                    type: string
+            description: ActivityInfo
+        v1.ActivityListReply:
+            type: object
+            properties: {}
+        v1.ActivityListRequest:
+            type: object
+            properties:
+                page:
+                    type: integer
+                    format: int32
+                size:
+                    type: integer
+                    format: int32
+            description: ActivityList
+        v1.BatchActivityInfoReply:
+            type: object
+            properties: {}
+        v1.BatchActivityInfoRequest:
+            type: object
+            properties:
+                uuids:
+                    type: array
+                    items:
+                        type: string
+            description: BatchActivityInfo
+        v1.BatchSkuInfoReply:
+            type: object
+            properties: {}
+        v1.BatchSkuInfoRequest:
+            type: object
+            properties:
+                sku_uuids:
+                    type: array
+                    items:
+                        type: string
+            description: BatchSkuInfo
+        v1.BatchSpuInfoReply:
+            type: object
+            properties: {}
+        v1.BatchSpuInfoRequest:
+            type: object
+            properties:
+                spu_uuids:
+                    type: array
+                    items:
+                        type: string
+            description: BatchSpuInfo
+        v1.CartListInfo:
+            type: object
+            properties: {}
+            description: 购物车列表共用字段
+        v1.ChangeCartSkuInfoReply:
+            type: object
+            properties: {}
+        v1.ChangeCartSkuInfoRequest:
+            type: object
+            properties:
+                spuUnionid:
+                    type: string
+                cartId:
+                    type: integer
+                    format: int32
+        v1.ChangeCartSkuReply:
+            type: object
+            properties:
+                cart_list_info:
+                    $ref: '#/components/schemas/v1.CartListInfo'
+        v1.ChangeCartSkuRequest:
+            type: object
+            properties: {}
+        v1.CheckedCartReply:
+            type: object
+            properties:
+                cart_list_info:
+                    $ref: '#/components/schemas/v1.CartListInfo'
+        v1.CheckedCartRequest:
+            type: object
+            properties:
+                cartIds:
+                    type: array
+                    items:
+                        type: integer
+                        format: int32
+                checked:
+                    type: integer
+                    format: int32
+        v1.ConfirmOrderReply:
+            type: object
+            properties: {}
+        v1.ConfirmOrderRequest:
+            type: object
+            properties: {}
+            description: ConfirmOrder
+        v1.CreateActivityReply:
+            type: object
+            properties: {}
+        v1.CreateActivityRequest:
+            type: object
+            properties:
+                uuid:
+                    type: string
+            description: CreateActivity
+        v1.CreateCartReply:
+            type: object
+            properties: {}
+        v1.CreateCartRequest:
+            type: object
+            properties:
+                skuInfo:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/v1.CreateCartRequest_SkuInfo'
+                promotionId:
+                    type: integer
+                    format: int32
+                sourceId:
+                    type: string
+                sourceUrl:
+                    type: string
+        v1.CreateCartRequest_SkuInfo:
+            type: object
+            properties:
+                skuUnionid:
+                    type: string
+                goodsNum:
+                    type: integer
+                    format: int32
+        v1.CreateOrderReply:
+            type: object
+            properties: {}
+        v1.CreateOrderRequest:
+            type: object
+            properties: {}
+            description: CreateOrder
+        v1.DeleteCartReply:
+            type: object
+            properties:
+                cart_list_info:
+                    $ref: '#/components/schemas/v1.CartListInfo'
+        v1.DeleteCartRequest:
+            type: object
+            properties:
+                cartIds:
+                    type: array
+                    items:
+                        type: integer
+                        format: int32
+        v1.GetCartQuantityRequest:
+            type: object
+            properties: {}
+        v1.GetCartQuantitytReply:
+            type: object
+            properties:
+                cart_list_num:
+                    type: integer
+                    format: int32
+        v1.ListCartReply:
+            type: object
+            properties:
+                cart_list_info:
+                    $ref: '#/components/schemas/v1.CartListInfo'
+        v1.ListCartRequest:
+            type: object
+            properties: {}
+        v1.OrderInfoReply:
+            type: object
+            properties: {}
+        v1.OrderInfoRequest:
+            type: object
+            properties: {}
+            description: OrderInfo
+        v1.OrderListReply:
+            type: object
+            properties: {}
+        v1.OrderListRequest:
+            type: object
+            properties: {}
+            description: OrderList
+        v1.PayOrderReply:
+            type: object
+            properties: {}
+        v1.PayOrderRequest:
+            type: object
+            properties: {}
+            description: PayOrder
+        v1.QuantityUpdateReply:
+            type: object
+            properties: {}
+        v1.QuantityUpdateRequest:
+            type: object
+            properties:
+                cartId:
+                    type: integer
+                    format: int32
+                goodsNum:
+                    type: integer
+                    format: int32
+                skuUnionid:
+                    type: string
+        v1.SkuInfoReply:
+            type: object
+            properties: {}
+        v1.SkuInfoRequest:
+            type: object
+            properties:
+                sku_uuid:
+                    type: string
+            description: SkuInfo
+        v1.SkuItem:
+            type: object
+            properties:
+                sku_spec_detail:
+                    $ref: '#/components/schemas/v1.SkuItem_SkuSpecItem'
+        v1.SkuItem_SkuSpecItem:
+            type: object
+            properties: {}
+        v1.SpuAcitvityInfoReply:
+            type: object
+            properties: {}
+        v1.SpuAcitvityInfoRequest:
+            type: object
+            properties: {}
+            description: SpuAcitvityInfo
+        v1.SpuActivityItem:
+            type: object
+            properties: {}
+        v1.SpuInfoReply:
+            type: object
+            properties:
+                spu_info:
+                    $ref: '#/components/schemas/v1.SpuItem'
+                spu_sepc_detail:
+                    $ref: '#/components/schemas/v1.SpuSpecItem'
+                sku_list:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/v1.SkuItem'
+                activity_data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/v1.SpuActivityItem'
+        v1.SpuInfoRequest:
+            type: object
+            properties:
+                spu_uuid:
+                    type: string
+                extend:
+                    type: integer
+                    format: int32
+            description: SpuInfo
+        v1.SpuItem:
+            type: object
+            properties: {}
+        v1.SpuListReply:
+            type: object
+            properties: {}
+        v1.SpuListRequest:
+            type: object
+            properties:
+                page:
+                    type: integer
+                    format: int32
+                size:
+                    type: integer
+                    format: int32
+            description: SpuList
+        v1.SpuSpecItem:
+            type: object
+            properties: {}
+        v1.UpdateActivityReply:
+            type: object
+            properties: {}
+        v1.UpdateActivityRequest:
+            type: object
+            properties:
+                uuid:
+                    type: string
+            description: UpdateActivity
+tags:
+    - name: ActivityService
+    - name: Cart
+    - name: GoodsService
+      description: Goods Service
+    - name: Greeter
+      description: The greeting service definition.
+    - name: OrderService
+      description: Order Service
