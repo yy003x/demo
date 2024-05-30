@@ -49,7 +49,7 @@ public:
     client_param:
       - group: "be_demo"
         data_id: "nacos.yaml"
-notice:
-  url: "https://yach-oapi.zhiyinlou.com/robot/send?access_token=MWtIU2pCTkx1UWdUL3BuOUd1WDU2TG5IZE1xT0pwRmhGeWRsaHorRnBLZHNqWlpPRjJ1elA3aUpEd2M5ZktTTQ"
-  secret: "SEC1cd8066358886ba7e7b51d8e2ac391db"
+  notice:
+    url: "https://yach-oapi.zhiyinlou.com/robot/send"
+    secret: ""
 

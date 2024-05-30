@@ -14,12 +14,12 @@ server:
 data:
   rwdb:
     driver: mysql
-    source: talbook_test_rw:5nReFlpF5aAWPkh_@tcp(rm-2zeu070mbue87769d.mysql.rds.aliyuncs.com:3306)/dm_tradein_test?imeout=3s&charset=utf8mb4&parseTime=True&loc=PRC
+    source: test_rw:test1234@tcp(localhost:3306)/dm_tradein_test?imeout=3s&charset=utf8mb4&parseTime=True&loc=PRC
     max_idle_conns: 1
     max_open_conns: 2
   rodb:
     driver: mysql
-    source: talbook_test_ro:lbkHwlDpopkOUj5_@tcp(rm-2zeu070mbue87769d.mysql.rds.aliyuncs.com:3306)/dm_tradein_test?imeout=3s&charset=utf8mb4&parseTime=True&loc=PRC
+    source: test_rw:test1234@tcp(localhost:3306)/dm_tradein_test?imeout=3s&charset=utf8mb4&parseTime=True&loc=PRC
     max_idle_conns: 1
     max_open_conns: 2
   redis:
@@ -28,8 +28,8 @@ data:
     write_timeout: 0.2s
 public:
   notice:
-    url: "https://yach-oapi.zhiyinlou.com/robot/send?access_token=L3JubGJDaVo1cmRuKzl2cmk4WFFNOHJrZmtONExjNU0vM1Z2NjJnNEJhWDNsYm1iT09EVUp1ZmMrN2JnVFZwWg"
-    secret: "SECaf23136272ff5e8f6f7e91ac7d5c81f0"
+    url: "https://yach-oapi.zhiyinlou.com/robot/send"
+    secret: ""
   log:
     path: "api-%Y%m%d.log"
     level: debug
