@@ -14,12 +14,12 @@ server:
 data:
   rwdb:
     driver: mysql-test-rwdb
-    source: talbook_test_rw:5nReFlpF5aAWPkh_@tcp(rm-2zeu070mbue87769d.mysql.rds.aliyuncs.com:3306)/dm_tradein_test?timeout=3s&charset=utf8mb4&parseTime=True&loc=Local
+    source: test_rw:test1234@tcp(localhost:3306)/be_demo?timeout=3s&charset=utf8mb4&parseTime=True&loc=Local
     max_idle_conns: 1
     max_open_conns: 2
   rodb:
     driver: mysql-test-rodb
-    source: talbook_test_ro:lbkHwlDpopkOUj5_@tcp(rm-2zeu070mbue87769d.mysql.rds.aliyuncs.com:3306)/dm_tradein_test?timeout=3s&charset=utf8mb4&parseTime=True&loc=Local
+    source: test_rw:test1234@tcp(localhost:3306)/be_demo?timeout=3s&charset=utf8mb4&parseTime=True&loc=Local
     max_idle_conns: 1
     max_open_conns: 2
   redis:

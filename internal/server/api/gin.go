@@ -3,7 +3,6 @@ package api
 import (
 	"be_demo/internal/conf"
 	"be_demo/internal/infrastructure/middleware"
-	"be_demo/internal/infrastructure/nacosx"
 	"be_demo/internal/service/api_serv"
 	"io/ioutil"
 
@@ -18,7 +17,6 @@ import (
 func NewGinHttpServer(
 	conf *conf.Bootstrap,
 	logger log.Logger,
-	nconf *nacosx.NacosConf[conf.NacosConfig],
 	pingService *api_serv.PingService,
 	activityService *api_serv.ActivityService,
 ) *http.Server {
@@ -43,7 +41,8 @@ func NewGinHttpServer(
 		recovery.Recovery(),
 	))
 	noneGroup := router.Group("/", middleware.RecoveryMiddleware(logger))
-	signGroup := router.Group("/", middleware.RecoveryMiddleware(logger), middleware.AuthSignMiddleware(nconf, logger))
+	// signGroup := router.Group("/", middleware.RecoveryMiddleware(logger), middleware.AuthSignMiddleware(nconf, logger))
+	signGroup := router.Group("/", middleware.RecoveryMiddleware(logger))
 	//注册优化
 	LoadPingService(noneGroup, pingService)
 	LoadActivityService(noneGroup, signGroup, activityService)

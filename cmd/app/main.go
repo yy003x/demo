@@ -2,6 +2,7 @@ package main
 
 import (
 	"be_demo/internal/conf"
+	"be_demo/internal/infrastructure/nacosx"
 	"flag"
 	"os"
 
@@ -72,6 +73,22 @@ func main() {
 
 	var bc conf.Bootstrap
 	if err := c.Scan(&bc); err != nil {
+		panic(err)
+	}
+
+	cn := config.New(
+		config.WithSource(
+			nacosx.GetNacosClient(&bc)...,
+		),
+	)
+	if err := cn.Load(); err != nil {
+		panic(err)
+	}
+	nconf := nacosx.NewNacosConf[conf.NacosConfig](cn, logger)
+	if err := nconf.Scan(); err != nil {
+		panic(err)
+	}
+	if err := nconf.Watch("root"); err != nil {
 		panic(err)
 	}
 

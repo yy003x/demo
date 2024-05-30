@@ -9,7 +9,6 @@ import (
 	"be_demo/internal/biz/api_biz"
 	"be_demo/internal/conf"
 	"be_demo/internal/data"
-	"be_demo/internal/infrastructure/nacosx"
 	"be_demo/internal/repository"
 	"be_demo/internal/server/api"
 	"be_demo/internal/service/api_serv"
@@ -20,7 +19,7 @@ import (
 )
 
 // wireApp init kratos application.
-func wireApp(*conf.Bootstrap, *nacosx.NacosConf[conf.NacosConfig], log.Logger) (*kratos.App, func(), error) {
+func wireApp(*conf.Bootstrap, log.Logger) (*kratos.App, func(), error) {
 	panic(wire.Build(
 		api.ProviderSet,
 		api_serv.ProviderSet,

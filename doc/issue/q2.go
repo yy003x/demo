@@ -14,30 +14,29 @@ import "fmt"
 func Q2() {
 	var arr = []int{3, 5, 7, 11, 13, 17, 19}
 	var sum = 18
-	rs := Q2Elegantly(arr, sum)
+	rs := TwoSum(arr, sum)
 	fmt.Println(rs)
 
 }
 
-func Q2Elegantly(nums []int, sum int) (res []int) {
-	var m = make(map[int]int)
-	for k, v := range nums {
-		if j, ok := m[sum-v]; ok {
-			res = append(res, j, k)
-			return
+func TwoSum(arr []int, sum int) []int {
+	hmap := map[int]int{}
+	for k, v := range arr {
+		if p, ok := hmap[sum-v]; ok {
+			return []int{p, k}
 		}
-		m[v] = k
+		hmap[v] = k
 	}
-	return
+	return []int{}
 }
-func Q2Violently(nums []int, sum int) (res []int) {
-	for k, v := range nums {
-		for j := k + 1; j < len(nums); j++ {
-			if v+nums[j] == sum {
-				res = append(res, k, j)
-				return
+
+func Q2Violently(arr []int, sum int) []int {
+	for k, v := range arr {
+		for j := k + 1; j < len(arr); j++ {
+			if v+arr[j] == sum {
+				return []int{v, arr[j]}
 			}
 		}
 	}
-	return
+	return []int{}
 }
