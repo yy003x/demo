@@ -7,6 +7,12 @@ import (
 	"time"
 )
 
+func TestAC(t *testing.T) {
+	m := map[string]float32{"hello": 1}
+	fmt.Println(m["hello"])
+	fmt.Println(m["world"])
+}
+
 func TestB(t *testing.T) {
 	a := new([16]byte)
 	for i := 1; i < 10; i++ {
