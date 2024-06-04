@@ -16,7 +16,6 @@ import (
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
 // Requires gRPC-Go v1.62.0 or later.
-const _ = grpc.SupportPackageIsVersion8
 
 const (
 	Greeter_SayHello_FullMethodName = "/helloworld.v1.Greeter/SayHello"
@@ -41,7 +40,7 @@ func NewGreeterClient(cc grpc.ClientConnInterface) GreeterClient {
 }
 
 func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	cOpts := append([]grpc.CallOption{}, opts...)
 	out := new(HelloReply)
 	err := c.cc.Invoke(ctx, Greeter_SayHello_FullMethodName, in, out, cOpts...)
 	if err != nil {
