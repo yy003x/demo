@@ -8,7 +8,6 @@ import (
 	"strings"
 	"time"
 
-	"git.100tal.com/kratos-lib/common"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/gomodule/redigo/redis"
 	"github.com/spf13/cast"
@@ -219,7 +218,7 @@ func (c *LoggingConn) DoWithTimeout(ctx context.Context, commandName string, arg
 	defer conn.Close()
 
 	startTime := time.Now()
-	timeout := common.ShrinkDuration(ctx, MaxTimeDuration)
+	timeout := ShrinkDuration(ctx, MaxTimeDuration)
 	reply, err := redis.DoWithTimeout(conn, timeout, commandName, args...)
 	c.log(ctx, logAttr{
 		method:    "DoWithTimeout",
@@ -244,7 +243,7 @@ func (c *LoggingConn) EvalWithContext(ctx context.Context, script string, keyCou
 	defer conn.Close()
 
 	startTime := time.Now()
-	timeout := common.ShrinkDuration(ctx, MaxTimeDuration)
+	timeout := ShrinkDuration(ctx, MaxTimeDuration)
 
 	lua := redis.NewScript(keyCount, script)
 	reply, err := lua.DoContext(ctx, conn, keyAndArgs...)
@@ -361,7 +360,7 @@ func (c *LoggingConn) MDel(ctx context.Context, keys []string) (err error) {
 	return
 }
 
-//Exists 判断key是否存在
+// Exists 判断key是否存在
 func (c *LoggingConn) Exists(ctx context.Context, key string) (bool, error) {
 	res, err := redis.Bool(c.DoWithTimeout(ctx, "EXISTS", key))
 	return res, err

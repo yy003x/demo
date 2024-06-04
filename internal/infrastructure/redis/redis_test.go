@@ -1,12 +1,12 @@
 package redis
 
 import (
+	"be_demo/internal/infrastructure/logger"
 	"context"
 	"fmt"
 	"testing"
 	"time"
 
-	"git.100tal.com/kratos-lib/logger"
 	"github.com/go-kratos/kratos/v2/log"
 )
 
