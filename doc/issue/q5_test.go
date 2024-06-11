@@ -30,7 +30,7 @@ func long(s string) string {
 			start, end = left1, right1
 		}
 		if right2-left2 > end-start {
-			start, end = left1, right1
+			start, end = left2, right2
 		}
 	}
 	return s[start : end+1]

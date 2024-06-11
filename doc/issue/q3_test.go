@@ -16,25 +16,24 @@ import (
 */
 
 func TestQ3(t *testing.T) {
-	s := "pwwkew"
-	for i := 0; i < len(s); i++ {
-		fmt.Println(s[i])
-	}
+	s := "pwwkewacbdefwkefa"
+	fmt.Println(LongestSubStr(s))
 }
 
-func Q1Elegantly(s string) int {
-	var m = make(map[string]int)
-	var rtn int
-	var start int
-	for i := 0; i < len(s); i++ {
-		str := string(s[i])
-		if n, ok := m[str]; ok {
-			start = max(start, n+1)
+func LongestSubStr(s string) int {
+	var (
+		left = 0
+		long = 0
+		hash = make(map[byte]int)
+	)
+	for right := 0; right < len(s); right++ {
+		if k, ok := hash[s[right]]; ok {
+			left = max(left, k+1)
 		}
-		rtn = max(rtn, i-start+1)
-		m[str] = i
+		long = max(long, right-left+1)
+		hash[s[right]] = right
 	}
-	return rtn
+	return long
 }
 
 func Q1Violently(s string) int {
@@ -49,9 +48,9 @@ func Q1Violently(s string) int {
 			}
 			m[str] = j
 			rs += str
-			l = min(l, len(rs))
 		}
 		fmt.Println(rs)
+		l = max(l, len(rs))
 	}
 	return l
 }
