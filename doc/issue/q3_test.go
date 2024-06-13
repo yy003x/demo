@@ -5,7 +5,8 @@ import (
 	"testing"
 )
 
-/* @Title 无重复字符的最长子串
+/*
+无重复字符的最长子串
 
 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 
@@ -24,14 +25,14 @@ func LongestSubStr(s string) int {
 	var (
 		left = 0
 		long = 0
-		hash = make(map[byte]int)
+		hmap = make(map[byte]int)
 	)
 	for right := 0; right < len(s); right++ {
-		if k, ok := hash[s[right]]; ok {
-			left = max(left, k+1)
+		if key, ok := hmap[s[right]]; ok {
+			left = max(left, key+1)
 		}
 		long = max(long, right-left+1)
-		hash[s[right]] = right
+		hmap[s[right]] = right
 	}
 	return long
 }
