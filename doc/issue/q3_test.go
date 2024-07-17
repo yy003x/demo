@@ -22,17 +22,16 @@ func TestQ3(t *testing.T) {
 }
 
 func LongestSubStr(s string) int {
-	var (
-		left = 0
-		long = 0
-		hmap = make(map[byte]int)
-	)
-	for right := 0; right < len(s); right++ {
-		if key, ok := hmap[s[right]]; ok {
+	hmap := make(map[string]int)
+	left := 0
+	long := 0
+	n := len(s)
+	for right := 0; right < n; right++ {
+		if key, ok := hmap[string(s[right])]; ok {
 			left = max(left, key+1)
 		}
 		long = max(long, right-left+1)
-		hmap[s[right]] = right
+		hmap[string(s[right])] = right
 	}
 	return long
 }
